@@ -8,8 +8,8 @@ public class MainGameObjectScript : MonoBehaviour
     public enum Chunks{ Empty, Water};
     public int chunkSize = 5;
     public int visibleArea = 3;
-    int mapChunksZ = 15;
-    int mapChunksX = 15;
+    public int mapChunksZ = 15;
+    public int mapChunksX = 15;
     private List<List<Chunks>> chunkMap; 
         // Start is called before the first frame update
     void Start()

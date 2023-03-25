@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,9 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 10;
-    
+    public float slow = 10;
+
+
     private Rigidbody rb;
 
     private float movementX;
@@ -16,6 +19,11 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        Vector3 pos = this.transform.position;
+        pos.y = 0.5f;
+        GetComponent<Transform>().position = pos;
+        rb.constraints = RigidbodyConstraints.FreezePositionY;
+        rb.drag = slow;
     }
 
     private void OnMove(InputValue movementValue)
@@ -45,4 +53,8 @@ public class PlayerController : MonoBehaviour
         rb.AddForce((movForward + movRight) * speed);
     }
 
+    public static explicit operator PlayerController(GameObject v)
+    {
+        throw new NotImplementedException();
+    }
 }

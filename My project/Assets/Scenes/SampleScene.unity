@@ -320,6 +320,7 @@ MonoBehaviour:
   height: 5
   adjHeight: 0
   lookAt: 1
+  rotation: 0
   type: 1
 --- !u!54 &963194230
 Rigidbody:
@@ -329,7 +330,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_Mass: 0.0000001
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -366,8 +367,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bac32892741f584bbbe41e1da3e4578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chunkSize: 5
+  chunkSize: 10
   visibleArea: 3
+  mapChunksZ: 150
+  mapChunksX: 150
 --- !u!4 &1820886260
 Transform:
   m_ObjectHideFlags: 0
@@ -399,6 +402,7 @@ GameObject:
   - component: {fileID: 1962621269}
   - component: {fileID: 1962621268}
   - component: {fileID: 1962621267}
+  - component: {fileID: 1962621270}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -496,7 +500,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4d8f5745efdcc4db4c50e95ea09aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 3000
+  slow: 5
 --- !u!54 &1962621268
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -543,6 +548,18 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 963194227}
+--- !u!114 &1962621270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962621262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee28a4a318931eb4ebaab9066758c3f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2103563802
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,7 +578,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2103563803
 Transform:
   m_ObjectHideFlags: 0
@@ -5369,8 +5386,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  distance: 10
-  height: 10
-  adjHeight: 1
+  distance: 0
+  height: 1
+  adjHeight: 0
   lookAt: 0
+  rotation: 1
   type: 0
