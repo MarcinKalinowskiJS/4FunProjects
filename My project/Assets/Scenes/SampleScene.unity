@@ -369,8 +369,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chunkSize: 10
   visibleArea: 3
-  mapChunksZ: 150
-  mapChunksX: 150
+  mapChunksZ: 15
+  mapChunksX: 15
 --- !u!4 &1820886260
 Transform:
   m_ObjectHideFlags: 0
@@ -500,7 +500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4d8f5745efdcc4db4c50e95ea09aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3000
+  speed: 100
   slow: 5
 --- !u!54 &1962621268
 Rigidbody:

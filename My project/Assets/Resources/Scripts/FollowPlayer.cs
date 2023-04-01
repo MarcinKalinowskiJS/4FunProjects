@@ -29,9 +29,6 @@ public class FollowPlayer : MonoBehaviour
     void FixedUpdate()
     {
 
-
-
-
         if (type == Type.follow)
         {
             //Whole distance between this object and player
@@ -51,14 +48,11 @@ public class FollowPlayer : MonoBehaviour
     {
         if (type == Type.permanent)
         {
-
-            Debug.Log("DRAG: " + GameObject.Find("Player").GetComponent<Rigidbody>().drag);
             thisTransform.position = playerT.position;
             if(rotation) {
                 //Degree
                 Vector3 actualVelocity = GameObject.Find("Player").GetComponent<Rigidbody>().velocity;
                 Vector3 forward = playerT.forward;
-                Debug.Log("ActVel:" + actualVelocity);
                 //thisTransform.rotation.SetLookRotation(actualVelocity);
                 if(GameObject.Find("Player").GetComponent<Rigidbody>().drag>0)
                 thisTransform.LookAt(playerT.position - actualVelocity + new Vector3(
@@ -72,23 +66,4 @@ public class FollowPlayer : MonoBehaviour
 
     }
 
-
-
-    /*private void FixedUpdate()
-    {
-        bool movementWorld = false;
-
-        if (movementWorld == true)
-        {
-            Vector3 movement = new Vector3(movementX, 0.0f, movementZ);
-        }
-
-        Vector3 movForward = Camera.main.transform.forward.normalized * movementZ;
-        Vector3 movRight = Camera.main.transform.right.normalized * movementX;
-
-        //https://www.youtube.com/watch?v=7kGCrq1cJew
-
-
-        rb.AddForce((movForward + movRight) * speed);
-    }*/
 }

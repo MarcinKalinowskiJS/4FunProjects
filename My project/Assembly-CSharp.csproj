@@ -60,6 +60,7 @@
     <Compile Include="Assets\Resources\Scripts\FollowPlayer.cs" />
     <Compile Include="Assets\Resources\Scripts\PrintJumping.cs" />
     <Compile Include="Assets\Resources\Scripts\Chunk.cs" />
+    <Compile Include="Assets\Resources\Scripts\AnimateWater.cs" />
     <Compile Include="Assets\Resources\Scripts\PlayerController.cs" />
   </ItemGroup>
   <ItemGroup>

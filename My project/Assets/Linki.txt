@@ -3,3 +3,7 @@ https://www.youtube.com/watch?v=7kGCrq1cJew
 
 //Fire
 https://www.youtube.com/watch?v=qShjsxopbfQ
+
+//Scale object around location
+https://forum.unity.com/threads/scale-around-point-similar-to-rotate-around.232768/
+https://answers.unity.com/questions/14170/scaling-an-object-from-a-different-center.html
