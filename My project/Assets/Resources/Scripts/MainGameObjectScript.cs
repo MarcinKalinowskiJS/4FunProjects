@@ -14,6 +14,7 @@ public class MainGameObjectScript : MonoBehaviour
         // Start is called before the first frame update
     void Start()
     {
+
         generateMap();
         int startY = 0, startX = 0;
         startGame(startY, startX);
@@ -55,8 +56,8 @@ public class MainGameObjectScript : MonoBehaviour
         return loadedObject;
     }
 
-    public void drawChunk(int x, int y, int z, string prefabName, string name) {
-        instantiatePrefab(x, y, z, prefabName, name);
+    public void drawChunk(int x, int y, int z, string prefabName, string inGameName) {
+        instantiatePrefab(x, y, z, prefabName, inGameName);
     }
 
     public string convertXYZToString(int x, int y, int z) {
