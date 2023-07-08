@@ -356,11 +356,15 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Resources/Scripts/AnimateWater.cs"
 "Assets/Resources/Scripts/Chunk.cs"
+"Assets/Resources/Scripts/Classes/blockedByInfo.cs"
+"Assets/Resources/Scripts/Classes/Buildings.cs"
 "Assets/Resources/Scripts/Classes/IAnimateStrategy.cs"
+"Assets/Resources/Scripts/Classes/stockInfo.cs"
 "Assets/Resources/Scripts/Dummy/PrintJumping.cs"
 "Assets/Resources/Scripts/FollowPlayer.cs"
 "Assets/Resources/Scripts/MainGameObjectScript.cs"
 "Assets/Resources/Scripts/PlayerController.cs"
+"Assets/Resources/Scripts/TWG.cs"
 -langversion:9.0
 
 /deterministic

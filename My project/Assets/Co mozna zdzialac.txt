@@ -1,3 +1,7 @@
+Dodac pracownikow i zaprzeg.
+ePoprawic animacje i odbijanie podlogi
+
+
 1. Wynajmowanie pracownikow. Podroz po swiatach. Plomienie przy duzych predkosciach
 2. Zaleznie od predkosci czy towary maja sie w trakcie podrozy usmazyc itp.
 3. Przy duzych predkosciach podroz po wodzie(moze takze chlodzenie?)

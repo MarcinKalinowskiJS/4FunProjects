@@ -8,3 +8,6 @@ https://www.youtube.com/watch?v=qShjsxopbfQ
 https://forum.unity.com/threads/scale-around-point-similar-to-rotate-around.232768/
 https://answers.unity.com/questions/14170/scaling-an-object-from-a-different-center.html
 https://forum.unity.com/threads/shader-graph-texture-scaling.1120375/
+
+//Make material shining
+https://www.youtube.com/watch?v=3IqmgsjC6AQ

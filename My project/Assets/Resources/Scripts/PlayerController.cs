@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
         GetComponent<Transform>().position = pos;
         rb.constraints = RigidbodyConstraints.FreezePositionY;
         rb.drag = slow;
+        Debug.Log(DateTime + " " + DateTime.Now);
     }
 
     private void OnMove(InputValue movementValue)

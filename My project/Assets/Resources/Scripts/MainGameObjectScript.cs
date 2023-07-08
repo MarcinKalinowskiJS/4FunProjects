@@ -10,7 +10,8 @@ public class MainGameObjectScript : MonoBehaviour
     public int visibleArea = 3;
     public int mapChunksZ = 15;
     public int mapChunksX = 15;
-    private List<List<Chunks>> chunkMap; 
+    private List<List<Chunks>> chunkMap;
+    private List<List<Buildings>> buildingMap;
         // Start is called before the first frame update
     void Start()
     {
@@ -34,17 +35,19 @@ public class MainGameObjectScript : MonoBehaviour
             for (int x = 0; x < mapChunksX * chunkSize; x+=chunkSize) {
                 chunkName = chunkMap[z/chunkSize][x/chunkSize].ToString();
                 if (x <= 0) {
-                    drawChunk(x, 0, z, chunkName, chunkName);
+                    drawChunk(x, 0, z, chunkSize, chunkName, chunkName);
                 }
                 else
                 {
-                    drawChunk(x, 0, z, chunkName, chunkName);
+                    drawChunk(x, 0, z, chunkSize, chunkName, chunkName);
                 }
 
             }
         }
         
     }
+
+    public void drawBuilding() { }
 
     private UnityEngine.Object LoadPrefabFromFile(string filename)
     {
@@ -56,8 +59,11 @@ public class MainGameObjectScript : MonoBehaviour
         return loadedObject;
     }
 
-    public void drawChunk(int x, int y, int z, string prefabName, string inGameName) {
-        instantiatePrefab(x, y, z, prefabName, inGameName);
+    public void drawChunk(int x, int y, int z, float chunkSize, string prefabName, string inGameName) {
+        GameObject chunk = instantiatePrefab(x, y, z, prefabName, inGameName);
+        //Y needs to be bigger than zero because there are problems with black chunks when it is set to zero
+        chunk.transform.localScale = new Vector3(chunkSize/10, 0.00001f, chunkSize/10);
+
     }
 
     public string convertXYZToString(int x, int y, int z) {
