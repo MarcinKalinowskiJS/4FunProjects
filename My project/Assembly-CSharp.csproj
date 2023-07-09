@@ -60,13 +60,13 @@
     <Compile Include="Assets\Resources\Scripts\Classes\IAnimateStrategy.cs" />
     <Compile Include="Assets\Resources\Scripts\FollowPlayer.cs" />
     <Compile Include="Assets\Resources\Scripts\Dummy\PrintJumping.cs" />
-    <Compile Include="Assets\Resources\Scripts\Chunk.cs" />
+    <Compile Include="Assets\Resources\Scripts\Classes\StockInfo.cs" />
+    <Compile Include="Assets\Resources\Scripts\Classes\Chunks.cs" />
+    <Compile Include="Assets\Resources\Scripts\Classes\BlockedByInfo.cs" />
     <Compile Include="Assets\Resources\Scripts\AnimateWater.cs" />
-    <Compile Include="Assets\Resources\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Resources\Scripts\TWG.cs" />
     <Compile Include="Assets\Resources\Scripts\Classes\Buildings.cs" />
-    <Compile Include="Assets\Resources\Scripts\Classes\stockInfo.cs" />
-    <Compile Include="Assets\Resources\Scripts\Classes\blockedByInfo.cs" />
+    <Compile Include="Assets\Resources\Scripts\PlayerController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Co mozna zdzialac.txt" />

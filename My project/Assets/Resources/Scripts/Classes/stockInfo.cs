@@ -7,11 +7,22 @@ using System.Threading.Tasks;
 namespace Assets.Resources.Scripts.Classes
 {
     //StockName, Stock count, Price, 
-    class stockInfo
+    public class StockInfo : IComparable
     {
         public String stockName;
         public int stockCount;
         public int pricePlayerBuy;
         public int pricePlayerSell;
+
+        public int CompareTo(object obj)
+        {
+            if (obj == null) return 1;
+
+            StockInfo sI = obj as StockInfo;
+            if (sI != null)
+                return this.stockName.CompareTo(sI.stockName);
+            else
+                throw new ArgumentException("Object is not a StockInfo");
+        }
     }
 }

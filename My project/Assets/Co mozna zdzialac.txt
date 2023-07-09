@@ -1,6 +1,6 @@
 Dodac pracownikow i zaprzeg.
 ePoprawic animacje i odbijanie podlogi
-
+Cofanie przez powtarzanie wczesniejszego ruchu lub skrecanie wedlug pierwszego odwrotnie jak samochodem
 
 1. Wynajmowanie pracownikow. Podroz po swiatach. Plomienie przy duzych predkosciach
 2. Zaleznie od predkosci czy towary maja sie w trakcie podrozy usmazyc itp.

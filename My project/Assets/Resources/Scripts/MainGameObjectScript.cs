@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using Assets.Resources.Scripts.Classes;
 
 public class MainGameObjectScript : MonoBehaviour
 {
-    public enum Chunks{ Empty, Water};
     public int chunkSize = 5;
     public int visibleArea = 3;
     public int mapChunksZ = 15;
     public int mapChunksX = 15;
     private List<List<Chunks>> chunkMap;
-    private List<List<Buildings>> buildingMap;
         // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +32,8 @@ public class MainGameObjectScript : MonoBehaviour
         //Add visible area
         for (int z = 0; z < mapChunksZ * chunkSize; z+=chunkSize) {
             for (int x = 0; x < mapChunksX * chunkSize; x+=chunkSize) {
-                chunkName = chunkMap[z/chunkSize][x/chunkSize].ToString();
+                chunkName = chunkMap[z/chunkSize][x/chunkSize].chunkType.ToString();
+                Debug.Log(z + " " + x + " chunkName:" + chunkName);
                 if (x <= 0) {
                     drawChunk(x, 0, z, chunkSize, chunkName, chunkName);
                 }
@@ -47,7 +47,10 @@ public class MainGameObjectScript : MonoBehaviour
         
     }
 
-    public void drawBuilding() { }
+    public void addBuilding() {
+        //buildingMap.Add(new Buildings());
+
+    }
 
     private UnityEngine.Object LoadPrefabFromFile(string filename)
     {
@@ -83,10 +86,10 @@ public class MainGameObjectScript : MonoBehaviour
             for (int x = 0; x < mapChunksX; x++) {
                 if (x <= 0) 
                 {
-                    chunkMap[z].Add(Chunks.Water);
+                    chunkMap[z].Add(new Chunks(Chunks.ChunksTypes.Water));
                 }
                 else {
-                    chunkMap[z].Add(Chunks.Empty);
+                    chunkMap[z].Add(new Chunks(Chunks.ChunksTypes.Empty));
                 }
             }
         }

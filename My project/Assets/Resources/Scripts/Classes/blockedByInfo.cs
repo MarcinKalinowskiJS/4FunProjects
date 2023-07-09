@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Assets.Resources.Scripts.Classes
 {
     //blockedBy, blocked, timeStamp
-    class blockedByInfo
+    public class BlockedByInfo
     {
         public String blockedByPlayer;
         public int blockedStockCount;
