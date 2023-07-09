@@ -16,7 +16,7 @@ public class TWG : MonoBehaviour
 
     //Merchands - pick up by spending money, Factories - transport for money from factories, Warehouses - store items
     public void generateTemporaryBuildings() {
-        //mainGOS;
+        mainGOS.addBuilding();
     }
 
     // Update is called once per frame

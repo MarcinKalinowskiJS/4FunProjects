@@ -33,7 +33,7 @@ public class MainGameObjectScript : MonoBehaviour
         for (int z = 0; z < mapChunksZ * chunkSize; z+=chunkSize) {
             for (int x = 0; x < mapChunksX * chunkSize; x+=chunkSize) {
                 chunkName = chunkMap[z/chunkSize][x/chunkSize].chunkType.ToString();
-                Debug.Log(z + " " + x + " chunkName:" + chunkName);
+                
                 if (x <= 0) {
                     drawChunk(x, 0, z, chunkSize, chunkName, chunkName);
                 }
@@ -47,9 +47,17 @@ public class MainGameObjectScript : MonoBehaviour
         
     }
 
-    public void addBuilding() {
-        //buildingMap.Add(new Buildings());
+    public void addBuilding(Buildings building) {
+        for (int x = (int)building.posChunk.x; x < building.posChunk.x + building.size.x; x++) {
+            for (int z = (int)building.posChunk.y; z < building.posChunk.y + building.size.z, z++) {
+                chunkMap[x][z].connectedBuildings.Add(building);
+            }
+        }
+        drawBuilding(building);
+    }
 
+    private void drawBuilding(Buildings building) {
+        //Should be only one class for drawing and all other stuff should be writeen in addBuilding/addChunk. To be continued....
     }
 
     private UnityEngine.Object LoadPrefabFromFile(string filename)
@@ -80,16 +88,17 @@ public class MainGameObjectScript : MonoBehaviour
     }
 
     public void generateMap() {
+        Chunks c = null;
         chunkMap = new List<List<Chunks>>();
         for (int z = 0; z < mapChunksZ; z++) {
             chunkMap.Add(new List<Chunks>());
             for (int x = 0; x < mapChunksX; x++) {
                 if (x <= 0) 
                 {
-                    chunkMap[z].Add(new Chunks(Chunks.ChunksTypes.Water));
+                    chunkMap[z].Add(c=new Chunks(Chunks.ChunksTypes.Water));
                 }
                 else {
-                    chunkMap[z].Add(new Chunks(Chunks.ChunksTypes.Empty));
+                    chunkMap[z].Add(c=new Chunks(Chunks.ChunksTypes.Empty));
                 }
             }
         }

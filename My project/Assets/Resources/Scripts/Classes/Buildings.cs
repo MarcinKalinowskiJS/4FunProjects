@@ -12,11 +12,12 @@ namespace Assets.Resources.Scripts.Classes
     public class Buildings
     {
         public enum buildingType { Merchand, Factory, Warehouse };
-        Vector3 posChunk;
+        public Vector3 posChunk;
+        public Vector3 size = Vector3.one;
 
         //1=100%
         float discounts = 1, extraCharges = 1;
-        float blockingTime;
+        float blockingTime=10;
         SortedList<StockInfo, BlockedByInfo> stock; //StockName, Stock count, Price, <blockedBy, blocked, timeStamp>
 
         public void transfer(String stockName, int count) {
