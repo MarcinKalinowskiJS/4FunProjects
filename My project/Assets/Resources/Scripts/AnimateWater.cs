@@ -30,7 +30,7 @@ public class AnimateWater : MonoBehaviour
 
     //<summary>
     //!IMPORTANT - When the values of scale are between -1 to 1 the texture will be mirrored probably horizontally and Vertically, when from 0 to 1 no mirroring
-    //Shift: Vector2(1f, 1f) - move by the size of whole texture, Vector2(0.5f, 0.5f) - move by half the texture
+    //Shift: Vector2(1f, 1f) - move by the sizeChunk of whole texture, Vector2(0.5f, 0.5f) - move by half the texture
     //</summary>
     public static void ScaleAroundTextureRelative(Material material, Vector2 newScale, Vector2 shift)
     {

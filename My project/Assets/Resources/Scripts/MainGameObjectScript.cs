@@ -14,7 +14,6 @@ public class MainGameObjectScript : MonoBehaviour
         // Start is called before the first frame update
     void Start()
     {
-
         generateMap();
         int startY = 0, startX = 0;
         startGame(startY, startX);
@@ -48,16 +47,17 @@ public class MainGameObjectScript : MonoBehaviour
     }
 
     public void addBuilding(Buildings building) {
-        for (int x = (int)building.posChunk.x; x < building.posChunk.x + building.size.x; x++) {
-            for (int z = (int)building.posChunk.y; z < building.posChunk.y + building.size.z, z++) {
-                chunkMap[x][z].connectedBuildings.Add(building);
-            }
-        }
+        chunkMap[(int)building.posChunk.z][(int)building.posChunk.x].connectedBuildings.Add(building);
+
         drawBuilding(building);
     }
 
     private void drawBuilding(Buildings building) {
         //Should be only one class for drawing and all other stuff should be writeen in addBuilding/addChunk. To be continued....
+        GameObject buildingGO = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        buildingGO.transform.position = (building.posChunk - building.sizeChunk/2)*chunkSize;
+        buildingGO.transform.localScale = building.sizeChunk*chunkSize;
+        Debug.Log(buildingGO.transform.position + " TUTAJ " + buildingGO.transform.localScale);
     }
 
     private UnityEngine.Object LoadPrefabFromFile(string filename)
@@ -86,7 +86,7 @@ public class MainGameObjectScript : MonoBehaviour
         go.name = goName + convertXYZToString(x, y, z);
         return go;
     }
-
+    /*
     public void generateMap() {
         Chunks c = null;
         chunkMap = new List<List<Chunks>>();
@@ -103,7 +103,7 @@ public class MainGameObjectScript : MonoBehaviour
             }
         }
     }
-
+    */
     public Chunks getChunk(int z, int x)
     {
         return chunkMap[(z - 1) / chunkSize + 1][(x - 1) / chunkSize + 1];
