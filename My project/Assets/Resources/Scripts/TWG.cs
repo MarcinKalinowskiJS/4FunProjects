@@ -19,11 +19,11 @@ public class TWG : MonoBehaviour
     //Merchands - pick up by spending money, Factories - transport for money from factories, Warehouses - store items
     public void generateMap() {
             Chunks c = null;
-            mainsGOS.chunkMap = new List<List<Chunks>>();
+            mainGOS.chunkMap = new List<List<Chunks>>();
             for (int z = 0; z < mainGOS.mapChunksZ; z++)
             {
                 mainGOS.chunkMap.Add(new List<Chunks>());
-                for (int x = 0; x < maingGOS.mapChunksX; x++)
+                for (int x = 0; x < mainGOS.mapChunksX; x++)
                 {
                     if (x <= 0)
                     {

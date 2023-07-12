@@ -6,6 +6,7 @@ using Assets.Resources.Scripts.Classes;
 
 public class MainGameObjectScript : MonoBehaviour
 {
+    public enum mapLineType{xPlus, xMinus, zPlus, zMinus};
     public int chunkSize = 5;
     public int visibleArea = 3;
     public int mapChunksZ = 15;
@@ -14,7 +15,7 @@ public class MainGameObjectScript : MonoBehaviour
         // Start is called before the first frame update
     void Start()
     {
-        generateMap();
+        //generateMap();
         int startY = 0, startX = 0;
         startGame(startY, startX);
     }
@@ -58,6 +59,22 @@ public class MainGameObjectScript : MonoBehaviour
         buildingGO.transform.position = (building.posChunk - building.sizeChunk/2)*chunkSize;
         buildingGO.transform.localScale = building.sizeChunk*chunkSize;
         Debug.Log(buildingGO.transform.position + " TUTAJ " + buildingGO.transform.localScale);
+    }
+
+    public void LoadMapLine<>(mapLineType type, List<> chunksToAdd) {
+        if (type == mapLineType.zMinus)
+        {
+            chunkMap.Insert(0, chunksToAdd);
+        }
+        else if (type == mapLineType.zPlus)
+        {
+            chunkMap.Add(chunksToAdd);
+        }
+        else if (type == mapLineType.xMinus) {
+            for(int i=0; i<mapChunksX)
+            chunkMap.Insert()
+        }
+
     }
 
     private UnityEngine.Object LoadPrefabFromFile(string filename)
