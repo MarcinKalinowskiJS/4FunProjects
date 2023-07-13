@@ -9,15 +9,17 @@ public class MainGameObjectScript : MonoBehaviour
     public enum mapLineType{xPlus, xMinus, zPlus, zMinus};
     public int chunkSize = 5;
     public int visibleArea = 3;
-    public int mapChunksZ = 15;
-    public int mapChunksX = 15;
+    public int mapChunksZ = 1;
+    public int mapChunksX = 1;
     private List<List<Chunks>> chunkMap;
         // Start is called before the first frame update
     void Start()
     {
         //generateMap();
         int startY = 0, startX = 0;
-        startGame(startY, startX);
+        //startGame(startY, startX);
+        startMap();
+        TWG.
     }
 
     // Update is called once per frame
@@ -26,26 +28,7 @@ public class MainGameObjectScript : MonoBehaviour
         
     }
 
-    public void startGame(int startY, int startX)
-    {
-        string chunkName = "Empty"; //Default
-        //Add visible area
-        for (int z = 0; z < mapChunksZ * chunkSize; z+=chunkSize) {
-            for (int x = 0; x < mapChunksX * chunkSize; x+=chunkSize) {
-                chunkName = chunkMap[z/chunkSize][x/chunkSize].chunkType.ToString();
-                
-                if (x <= 0) {
-                    drawChunk(x, 0, z, chunkSize, chunkName, chunkName);
-                }
-                else
-                {
-                    drawChunk(x, 0, z, chunkSize, chunkName, chunkName);
-                }
-
-            }
-        }
-        
-    }
+    
 
     public void addBuilding(Buildings building) {
         chunkMap[(int)building.posChunk.z][(int)building.posChunk.x].connectedBuildings.Add(building);
@@ -61,20 +44,78 @@ public class MainGameObjectScript : MonoBehaviour
         Debug.Log(buildingGO.transform.position + " TUTAJ " + buildingGO.transform.localScale);
     }
 
-    public void LoadMapLine<>(mapLineType type, List<> chunksToAdd) {
+    public void startMap() {
+        chunkMap = new List<List<Chunks>>();
+        chunkMap[0].Add(new Chunks(Chunks.ChunksTypes.Empty));
+        string chunkName = chunkMap[0][0].chunkType.ToString();
+
+        drawChunk(0, 0, 0, chunkSize, chunkName, chunkName);
+    }
+
+    public void LoadMapLine(mapLineType type, List<Chunks> chunksToAdd) {
         if (type == mapLineType.zMinus)
         {
-            chunkMap.Insert(0, chunksToAdd);
+            if (chunksToAdd.Count != mapChunksX)
+            {
+                Debug.Log("!!!!MAP ERROR: chunks to add count do not mach - size of X");
+            }
+            else
+            {
+                chunkMap.Insert(0, chunksToAdd);
+                foreach (Chunks c in chunksToAdd) {
+                    drawChunk(c);
+                }
+                mapChunksZ++;
+            }
         }
         else if (type == mapLineType.zPlus)
         {
-            chunkMap.Add(chunksToAdd);
+            if (chunksToAdd.Count != mapChunksX)
+            {
+                Debug.Log("!!!!MAP ERROR: chunks to add count do not mach - size of X");
+            }
+            else
+            {
+                chunkMap.Add(chunksToAdd);
+                foreach (Chunks c in chunksToAdd)
+                {
+                    drawChunk(c);
+                }
+                mapChunksZ++;
+            }
         }
-        else if (type == mapLineType.xMinus) {
-            for(int i=0; i<mapChunksX)
-            chunkMap.Insert()
+        else if (type == mapLineType.xMinus)
+        {
+            if (chunksToAdd.Count != mapChunksZ) {
+                Debug.Log("!!!!MAP ERROR: chunks to add count do not mach - size of Z");
+            }
+            else
+            {
+                for (int i = 0; i < mapChunksZ; i++)
+                {
+                    chunkMap[i].Insert(0, chunksToAdd[i]);
+                    drawChunk(chunkMap[i][0]);
+                }
+                mapChunksX++;
+            }
         }
+        else if (type == mapLineType.xPlus) {
+            if (chunksToAdd.Count != mapChunksZ)
+            {
+                Debug.Log("!!!!MAP ERROR: chunks to add count do not mach - size of X");
+            }
+            else
+            {
+                for (int i = 0; i < mapChunksZ; i++)
+                {
+                    chunkMap[i].Add(chunksToAdd[i]);
+                    drawChunk(chunkMap[i][mapChunksX + 1]);
+                }
+                mapChunksX++;
+            }
 
+        }
+        
     }
 
     private UnityEngine.Object LoadPrefabFromFile(string filename)
@@ -87,11 +128,17 @@ public class MainGameObjectScript : MonoBehaviour
         return loadedObject;
     }
 
+    public void drawChunk(Chunks chunk) {
+        string chunkName = chunk.chunkType.ToString();
+        GameObject chunkGO = instantiatePrefab((int)chunk.pos.x * chunkSize, (int)chunk.pos.y * chunkSize, (int)chunk.pos.z * chunkSize, chunkName, chunkName);
+        //Y needs to be bigger than zero because there are problems with black chunks when it is set to zero
+        chunkGO.transform.localScale = new Vector3(chunkSize / 10, 0.00001f, chunkSize / 10);
+    }
+
     public void drawChunk(int x, int y, int z, float chunkSize, string prefabName, string inGameName) {
         GameObject chunk = instantiatePrefab(x, y, z, prefabName, inGameName);
         //Y needs to be bigger than zero because there are problems with black chunks when it is set to zero
         chunk.transform.localScale = new Vector3(chunkSize/10, 0.00001f, chunkSize/10);
-
     }
 
     public string convertXYZToString(int x, int y, int z) {

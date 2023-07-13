@@ -2,6 +2,8 @@ Dodac pracownikow i zaprzeg.
 ePoprawic animacje i odbijanie podlogi
 Cofanie przez powtarzanie wczesniejszego ruchu lub skrecanie wedlug pierwszego odwrotnie jak samochodem
 
+Podczas szybkiego przelatywania mozna zapisywac tylko budynki i nie generowac mapy - pominac szybko przeleciane pola i generowac mape przy zwolnieniu.
+
 1. Wynajmowanie pracownikow. Podroz po swiatach. Plomienie przy duzych predkosciach
 2. Zaleznie od predkosci czy towary maja sie w trakcie podrozy usmazyc itp.
 3. Przy duzych predkosciach podroz po wodzie(moze takze chlodzenie?)

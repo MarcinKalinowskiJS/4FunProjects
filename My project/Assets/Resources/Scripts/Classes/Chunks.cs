@@ -7,6 +7,7 @@ public class Chunks
 {   
     public enum ChunksTypes { Empty, Water };
     public ChunksTypes chunkType;
+    public Vector3 pos;
     public List<Buildings> connectedBuildings;
 
     public Chunks(ChunksTypes chunkTypeC) {//Chunk Type Constructor
