@@ -368,10 +368,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bac32892741f584bbbe41e1da3e4578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chunkSize: 1
+  chunkSize: 5
+  chunkSizeMiddle: 0
   visibleArea: 3
-  mapChunksZ: 15
-  mapChunksX: 15
+  mapChunksZToLoad: 2
+  mapChunksXToLoad: 2
+  mapChunksZ: 0
+  mapChunksX: 0
 --- !u!4 &1820886260
 Transform:
   m_ObjectHideFlags: 0
