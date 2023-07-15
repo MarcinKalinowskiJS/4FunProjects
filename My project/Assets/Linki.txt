@@ -11,3 +11,6 @@ https://forum.unity.com/threads/shader-graph-texture-scaling.1120375/
 
 //Make material shining
 https://www.youtube.com/watch?v=3IqmgsjC6AQ
+
+SortedList vs Sorted Dictionary complexity
+https://stackoverflow.com/questions/935621/whats-the-difference-between-sortedlist-and-sorteddictionary

@@ -12,28 +12,68 @@ namespace Assets.Resources.Scripts.Classes
     public class Buildings
     {
         public enum buildingType { Merchand, Factory, Warehouse };
-        public Vector3 posChunk = new Vector3(0, 0, 0);
+        public Vector3 posChunk = Vector3.one;
         public Vector3 sizeChunk = Vector3.one/2;
 
         //1=100%
         float discounts = 1, extraCharges = 1;
         float blockingTime=10;
-        SortedList<StockInfo, BlockedByInfo> stock; //StockName, Stock count, Price, <blockedBy, blocked, timeStamp>
+        //<StockName, StockInfo>>
+        private SortedDictionary<string, StockInfo> stock;
+        //StockName, Stock count, Price, <blockedBy, blocked, timeStamp>
 
         public Buildings() {
-            Debug.Log("Works1?");
+            stock = new SortedDictionary<string, StockInfo>();
+            addStock(new StockInfo("Złoto"));
+            addStock(new StockInfo("Pasztet"));
+        }
+        public Buildings(Vector3 buildingsPos) {
+            posChunk = buildingsPos;
+            
         }
         public void transfer(String stockName, int count) {
             //stock.
             ;
         }
 
-        public void addStock(StockInfo si) {
-            //TODO: When adding same stock only number needs to be increased
-            stock.Add(si, new BlockedByInfo());
+        public void addStock(StockInfo si)
+        {
+            StockInfo siFound = getStock(si.stockName);
+            if (siFound == null)
+            {
+                stock.Add(si.stockName, si);
+            }
+            else {
+                siFound.stockCount += si.stockCount;
+            }
         }
 
-        public String printStockList() {
+        public StockInfo getStock(string name) {
+            StockInfo value;
+            if (stock.TryGetValue(name, out value))
+            {
+                return value;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public string getAllStock() {
+            string stocksString = "";
+
+            foreach (KeyValuePair <string, StockInfo> stockInfo in stock) {
+                stocksString += "(" + stockInfo.Value.ToString() + ") ";
+            }
+            if (stocksString.Length > 0) {
+                stocksString = stocksString.Substring(0, stocksString.Length - 1);
+            }
+
+            return stocksString;
+        }
+        /*
+            public String printStockList() {
             String output = "";
 
             foreach (KeyValuePair<StockInfo, BlockedByInfo> kv in stock) {
@@ -41,6 +81,6 @@ namespace Assets.Resources.Scripts.Classes
             }
 
             return output;
-        }
+        }*/
     }
 }

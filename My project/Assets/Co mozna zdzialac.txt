@@ -1,3 +1,5 @@
+Do poprawy ustawianie budynkow w przestrzeni dla Vector3.one zle generuje pozycje i prawdopodobnie rozmiar budynku.
+
 Dodac pracownikow i zaprzeg.
 ePoprawic animacje i odbijanie podlogi
 Cofanie przez powtarzanie wczesniejszego ruchu lub skrecanie wedlug pierwszego odwrotnie jak samochodem

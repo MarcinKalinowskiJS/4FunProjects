@@ -32,8 +32,6 @@ public class MainGameObjectScript : MonoBehaviour
         
     }
 
-    
-
     public void addBuilding(Buildings building) {
         chunkMap[(int)building.posChunk.z][(int)building.posChunk.x].connectedBuildings.Add(building);
 
@@ -58,13 +56,13 @@ public class MainGameObjectScript : MonoBehaviour
         //string chunkName = chunkMap[0][0].chunkType.ToString();
 
         //drawChunk(0, 0, 0, chunkSize, chunkName, chunkName);
-        Debug.Log("chunkMap.count:" + chunkMap.Count);
+        //Debug.Log("chunkMap.count:" + chunkMap.Count);
         //mapChunksX++;
         //mapChunksZ++;
     }
 
     public void LoadMapLine(mapLineType type, List<Chunks> chunksToAdd) {
-        
+        /*
         //DEBUG
         string XOY = "";
         switch (type) {
@@ -76,7 +74,7 @@ public class MainGameObjectScript : MonoBehaviour
         }
         //DEBUG
 
-        Debug.Log(XOY + ": Chunks.count=" + chunksToAdd.Count + " Z|X " + mapChunksZ + "|" + mapChunksX);
+        Debug.Log(XOY + ": Chunks.count=" + chunksToAdd.Count + " Z|X " + mapChunksZ + "|" + mapChunksX);*/
         if (type == mapLineType.zMinus)
         {
 
@@ -110,10 +108,9 @@ public class MainGameObjectScript : MonoBehaviour
                 for (int i = 0; i < mapChunksZ; i++)
                 {
                     chunkMap[i].Add(chunksToAdd[i]);
-                    drawChunk(chunkMap[i][mapChunksX]); //If size=1 then id=0
+                    drawChunk(chunkMap[i][mapChunksX]); 
                 }
                 mapChunksX++;
-
         }
         
     }
@@ -152,7 +149,8 @@ public class MainGameObjectScript : MonoBehaviour
     }
     public Chunks getChunk(int z, int x)
     {
-        return chunkMap[(z - 1) / chunkSize + 1][(x - 1) / chunkSize + 1];
+        Debug.Log(z + " " + x + "test" + chunkMap[z][x].connectedBuildings[0]);
+        return chunkMap[z][x];
     }
 
     public void setChunk(int z, int x, Chunks type)
