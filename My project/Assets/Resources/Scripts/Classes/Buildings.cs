@@ -12,8 +12,8 @@ namespace Assets.Resources.Scripts.Classes
     public class Buildings
     {
         public enum buildingType { Merchand, Factory, Warehouse };
-        public Vector3 posChunk = new Vector3(1, 0, 1);
-        public Vector3 sizeChunk = Vector3.one;// /2;
+        public Vector3 posChunk = new Vector3(0, 0, 0);
+        public Vector3 sizeChunk = Vector3.one/2;
 
         //1=100%
         float discounts = 1, extraCharges = 1;

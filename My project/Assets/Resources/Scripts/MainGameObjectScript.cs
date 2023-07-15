@@ -44,8 +44,8 @@ public class MainGameObjectScript : MonoBehaviour
         //Should be only one class for drawing and all other stuff should be writeen in addBuilding/addChunk. To be continued....
         GameObject buildingGO = GameObject.CreatePrimitive(PrimitiveType.Cube);
         //buildingGO.transform.position = (building.posChunk - building.sizeChunk/2)*chunkSize;
-        buildingGO.transform.position = building.posChunk;
-        buildingGO.transform.localScale = building.sizeChunk;
+        buildingGO.transform.position = building.posChunk + new Vector3(building.sizeChunk.x * chunkSize / 2, building.sizeChunk.y * chunkSize/2, building.sizeChunk.z * chunkSize / 2);
+        buildingGO.transform.localScale = building.sizeChunk * chunkSize;
         Debug.Log(buildingGO.transform.position + " TUTAJ " + buildingGO.transform.localScale);
     }
 
@@ -130,15 +130,15 @@ public class MainGameObjectScript : MonoBehaviour
 
     public void drawChunk(Chunks chunk) {
         string chunkName = chunk.chunkType.ToString();
-        GameObject chunkGO = instantiatePrefab((int)chunk.pos.x * chunkSize+chunkSize/2, (int)chunk.pos.y * chunkSize, (int)chunk.pos.z * chunkSize+chunkSize/2, chunkName, chunkName);
+        GameObject chunkGO = instantiatePrefab((int)chunk.pos.x * chunkSize + chunkSize/2, (int)chunk.pos.y * chunkSize, (int)chunk.pos.z * chunkSize + chunkSize/2, chunkName, chunkName);
         //Y needs to be bigger than zero because there are problems with black chunks when it is set to zero
         chunkGO.transform.localScale = new Vector3((float)chunkSize / 10, 0.00001f, (float)chunkSize / 10);
     }
 
     public void drawChunk(int x, int y, int z, float chunkSize, string prefabName, string inGameName) {
-        GameObject chunk = instantiatePrefab((int)(x*chunkSize+chunkSize/2), (int)(y+chunkSize/2), (int)(z+chunkSize/2), prefabName, inGameName);
+        GameObject chunk = instantiatePrefab((int)(x*chunkSize + chunkSize/2), (int)(y), (int)(z*chunkSize + chunkSize/2), prefabName, inGameName);
         //Y needs to be bigger than zero because there are problems with black chunks when it is set to zero
-        chunk.transform.localScale = new Vector3(chunkSize/10, 0.00001f, chunkSize/10);
+        chunk.transform.localScale = new Vector3((float)chunkSize/10, 0.00001f, (float)chunkSize/10);
     }
 
     public string convertXYZToString(int x, int y, int z) {
