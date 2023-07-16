@@ -24,12 +24,13 @@ namespace Assets.Resources.Scripts.Classes
 
         public Buildings() {
             stock = new SortedDictionary<string, StockInfo>();
+
+            //Starting stock
             addStock(new StockInfo("Złoto"));
             addStock(new StockInfo("Pasztet"));
         }
         public Buildings(Vector3 buildingsPos) {
             posChunk = buildingsPos;
-            
         }
         public void transfer(String stockName, int count) {
             //stock.
@@ -60,7 +61,11 @@ namespace Assets.Resources.Scripts.Classes
             }
         }
 
-        public string getAllStock() {
+        public SortedDictionary<string, StockInfo> GetAllStock() {
+            return stock;
+        }
+
+        public string getAllStockToString() {
             string stocksString = "";
 
             foreach (KeyValuePair <string, StockInfo> stockInfo in stock) {

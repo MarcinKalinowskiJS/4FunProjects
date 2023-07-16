@@ -23,7 +23,7 @@ public class TWG : MonoBehaviour
     }
 
     public void checkStock() {
-        Debug.Log(mainGOS.getChunk(1, 1).connectedBuildings[0].getAllStock().ToString());
+        Debug.Log(mainGOS.getChunk(1, 1).connectedBuildings[0].getAllStockToString());
     }
 
     //Merchands - pick up by spending money, Factories - transport for money from factories, Warehouses - store items

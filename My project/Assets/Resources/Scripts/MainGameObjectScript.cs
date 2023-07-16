@@ -149,7 +149,7 @@ public class MainGameObjectScript : MonoBehaviour
     }
     public Chunks getChunk(int z, int x)
     {
-        Debug.Log(z + " " + x + "test" + chunkMap[z][x].connectedBuildings[0]);
+        //Debug.Log(z + " " + x + "test" + chunkMap[z][x].connectedBuildings[0]);
         return chunkMap[z][x];
     }
 

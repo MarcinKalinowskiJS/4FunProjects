@@ -14,3 +14,9 @@ https://www.youtube.com/watch?v=3IqmgsjC6AQ
 
 SortedList vs Sorted Dictionary complexity
 https://stackoverflow.com/questions/935621/whats-the-difference-between-sortedlist-and-sorteddictionary
+
+Extension methods - Used for adding utility functions to classes we do not have control
+https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/extension-methods
+
+UI tutorial - menu
+https://youtu.be/lF26yGJbsQk
