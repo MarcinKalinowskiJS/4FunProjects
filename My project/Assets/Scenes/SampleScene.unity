@@ -206,8 +206,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 273062538}
   m_HandleRect: {fileID: 273062537}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.61
+  m_Value: 1.0000005
+  m_Size: 0.60999995
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2781,9 +2781,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90b056e7622213b42ad7e141b7e2079b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test0: 1
-  rt: {fileID: 1992351365}
-  test: 0
+  widthPosPercent: 1
+  heightPosPercent: 94
+  widthPercent: 25
+  heightPercent: 5
 --- !u!1 &2001117550
 GameObject:
   m_ObjectHideFlags: 0

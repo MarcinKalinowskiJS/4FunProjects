@@ -5,36 +5,47 @@ using UnityEngine;
 
 public class PositionUIElement : MonoBehaviour
 {
-    public float test0 = 1;
-    public RectTransform rt;
-    public float test;
-    
     /*
+     * TODO: check if all needed parameters were set to prevent program errors
      * Canvas scaler needs to be set to "Constant pixel size"
-     * Rect transform Anchros and Pivot all set to "0"
+     * Rect transform Anchors and Pivot all set to "0"
+     *(X,Y) 0,0 is lower left corner
      */
-    private int widthA, heightA;
-    private int widthMin, widthMax, widthPercentage;
-    private int heightMin, heightMax, heightPercentage;
-    public void SetPosition(int widthF, int heightF) {
-        widthA = widthF;
-        heightA = heightF;
+    public int widthPosPercent, heightPosPercent;
+    public int widthPercent, heightPercent;
+    
+    private int widthMin, widthMax;
+    private int heightMin, heightMax;
+    private RectTransform thisElementRT;
+
+    public void SetPositionPercentage(int widthPositionPercentageF, int heightPositionPercentageF) {
+        this.widthPosPercent = widthPositionPercentageF;
+        this.heightPosPercent = heightPositionPercentageF;
+    }
+    public void SetPosition(int widthF, int heightF)
+    {
+        widthPosPercent = widthF / Screen.width;
+        heightPosPercent = heightF / Screen.height;
     }
     public void SetDimensions(int widthMinF, int widthMaxF, int widthPercentageF, int heightMinF, int heightMaxF, int heightPercentageF)
     {
         widthMin = widthMinF;
         widthMax = widthMaxF;
-        widthPercentage = widthPercentageF;
+        widthPercent = widthPercentageF;
 
         heightMin = heightMinF;
         heightMax = heightMaxF;
-        heightPercentage = heightPercentageF;
+        heightPercent = heightPercentageF;
 
     }
     
-    private int GetOneDimensionSize(int maxScreenPixels, int percents, int min, int max)
+    private int GetOneDimensionSize(int maxScreenPixels, int min, int percents, int max)
     {
-        int calculated = (int)(maxScreenPixels * percents / 100);
+        
+
+        int calculated = (int)((float)maxScreenPixels * percents / 100);
+
+        Debug.Log(maxScreenPixels + " <<<max Screen pixels|percents>>> " + percents + " " + calculated + "  <<<Calculated");
 
         if (calculated >= min && calculated <= max)
         {
@@ -47,26 +58,25 @@ public class PositionUIElement : MonoBehaviour
             return min;
 
         }
-        else if (calculated > max) {
+        else if (calculated > max && max != 0) {
             Debug.Log("Calculated MAX");
             return max;
         }
-        Debug.Log("NOT Calculated. Default");
+        Debug.Log("Calculated, NOT constrained. Default");
         //default
         return calculated;
     }
 
-    public void AutoFit(RectTransform rt)//RectTransform rt)
+    public void AutoFit()//RectTransform rt)
     {
-
-        rt.offsetMin = new Vector2(0, Screen.height-25);
-        rt.offsetMax = new Vector2(Screen.width,Screen.height);
-        
-
-
-        
-        //rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, ;
-        Debug.Log("Screen width:" + Screen.width);
+        thisElementRT.offsetMin = new Vector2(widthPosPercent*Screen.width/100, heightPosPercent*Screen.height/100);//Position
+        thisElementRT.offsetMax = new Vector2(GetOneDimensionSize(Screen.width, widthMin, widthPosPercent+widthPercent, widthMax),
+            GetOneDimensionSize(Screen.height, heightMin, heightPosPercent+heightPercent, heightMax));//Dimension
+        /*
+        Debug.Log((widthPosPercent * Screen.width) + " WA:HA " + (heightPosPercent * Screen.height));
+        Debug.Log(GetOneDimensionSize(Screen.width, widthMin, widthPercent, widthMax) + " :width height: "
+            + GetOneDimensionSize(Screen.height, heightMin, heightPercent, heightMax));
+        */
     }
 
     public void ClearLog() //you can copy/paste this code to the bottom of your script
@@ -77,16 +87,41 @@ public class PositionUIElement : MonoBehaviour
         method.Invoke(new object(), null);
     }
 
+    private RectTransform GetFirstRectTransform()
+    {
+        return this.GetComponent<RectTransform>();
+    }
+
     public void Start()
     {
+        thisElementRT = GetFirstRectTransform();
         
     }
     public void Update()
     {
-        AutoFit(rt);
+        AutoFit();
+        /*
+        RunAutoFit++;
+        //Run
+        if (RunAutoFit / 10 > 1)
+        {*/
+        //RunAutoFit = 0;
+
+        //}
+    }
+
+    override public string ToString() {
+        return this.name + "<PositionUIElement>";
     }
 }
-
+/*
+ *     public int widthPosPercent, heightPosPercent;
+    public int widthPercent, heightPercent;
+    
+    private int widthMin, widthMax;
+    private int heightMin, heightMax;
+    private RectTransform thisElementRT;
+*/
 
 
 /*Calculating anchors - not sure if it is the right way
