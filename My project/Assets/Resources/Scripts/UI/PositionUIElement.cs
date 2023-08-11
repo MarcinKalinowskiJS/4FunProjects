@@ -45,24 +45,24 @@ public class PositionUIElement : MonoBehaviour
 
         int calculated = (int)((float)maxScreenPixels * percents / 100);
 
-        Debug.Log(maxScreenPixels + " <<<max Screen pixels|percents>>> " + percents + " " + calculated + "  <<<Calculated");
+        //Debug.Log(maxScreenPixels + " <<<max Screen pixels|percents>>> " + percents + " " + calculated + "  <<<Calculated");
 
         if (calculated >= min && calculated <= max)
         {
-            Debug.Log("Calculated NORMAL");
+            //Debug.Log("Calculated NORMAL");
             return calculated;
         }
         else if (calculated < min)
         {
-            Debug.Log("Calculated MIN");
+            //Debug.Log("Calculated MIN");
             return min;
 
         }
         else if (calculated > max && max != 0) {
-            Debug.Log("Calculated MAX");
+            //Debug.Log("Calculated MAX");
             return max;
         }
-        Debug.Log("Calculated, NOT constrained. Default");
+        ///Debug.Log("Calculated, NOT constrained. Default");
         //default
         return calculated;
     }

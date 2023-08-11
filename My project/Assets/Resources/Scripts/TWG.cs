@@ -91,6 +91,7 @@ public class TWG : MonoBehaviour
             
 
         Buildings b = new Buildings();
+
         //mainGOS.addBuilding(b);
 
         //for(int x = (int)building.posChunk.x; x < building.posChunk.x + building.sizeChunk.x; x++) {

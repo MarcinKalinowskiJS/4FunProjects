@@ -11,8 +11,9 @@ namespace Assets.Resources.Scripts.Classes
 {
     public class Buildings
     {
+        public string name = "Ale duży budynek bez nazwy!";
         public enum buildingType { Merchand, Factory, Warehouse };
-        public Vector3 posChunk = Vector3.one;
+        public Vector3 posChunk = Vector3.zero;
         public Vector3 sizeChunk = Vector3.one/2;
 
         //1=100%

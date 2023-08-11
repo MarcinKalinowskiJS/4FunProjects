@@ -370,10 +370,12 @@
 "Assets/Resources/Scripts/ExtensionMethods/IComponentData.cs"
 "Assets/Resources/Scripts/ExtensionMethods/SingletonExtensionMethod.cs"
 "Assets/Resources/Scripts/FollowPlayer.cs"
+"Assets/Resources/Scripts/LinkingScript.cs"
 "Assets/Resources/Scripts/MainGameObjectScript.cs"
 "Assets/Resources/Scripts/PlayerController.cs"
 "Assets/Resources/Scripts/TWG.cs"
 "Assets/Resources/Scripts/UI/PositionUIElement.cs"
+"Assets/Resources/Scripts/UI/TopMenuDropdownScript.cs"
 -langversion:9.0
 
 /deterministic

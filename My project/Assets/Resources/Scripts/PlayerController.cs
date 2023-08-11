@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     private float movementX;
     private float movementZ;
+    public LinkingScript linkingScript;
 
     // Start is called before the first frame update
     void Start()
@@ -57,4 +58,7 @@ public class PlayerController : MonoBehaviour
     {
         throw new NotImplementedException();
     }
+
+
+
 }
