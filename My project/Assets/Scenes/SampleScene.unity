@@ -2267,8 +2267,8 @@ MonoBehaviour:
   chunkSize: 10
   chunkSizeMiddle: 0
   visibleArea: 3
-  mapChunksZToLoad: 2
-  mapChunksXToLoad: 2
+  mapChunksZToLoad: 10
+  mapChunksXToLoad: 10
   mapChunksZ: 0
   mapChunksX: 0
   linkingScript: {fileID: 0}
@@ -2816,7 +2816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 873542b17eee4144a9a9c307fcd1498b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToBuildings: 1
+  distanceToBuildings: 2
   linkingScript: {fileID: 0}
 --- !u!1 &2001117550
 GameObject:

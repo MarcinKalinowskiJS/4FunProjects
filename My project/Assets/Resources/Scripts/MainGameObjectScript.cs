@@ -35,7 +35,6 @@ public class MainGameObjectScript : MonoBehaviour
 
     public void addBuilding(Buildings building) {
         chunkMap[(int)building.posChunk.z][(int)building.posChunk.x].connectedBuildings.Add(building);
-        Debug.Log(building.posChunk.z + " BUILDING WRONGLY POSITIONED SO CHUNK IN VICINity does not work " + building.posChunk.x);
         drawBuilding(building);
     }
 
@@ -43,7 +42,7 @@ public class MainGameObjectScript : MonoBehaviour
         //Should be only one class for drawing and all other stuff should be writeen in addBuilding/addChunk. To be continued....
         GameObject buildingGO = GameObject.CreatePrimitive(PrimitiveType.Cube);
         //buildingGO.transform.position = (building.posChunk - building.sizeChunk/2)*chunkSize;
-        buildingGO.transform.position = building.posChunk + new Vector3(building.sizeChunk.x * chunkSize, building.sizeChunk.y * chunkSize/2, building.sizeChunk.z * chunkSize);
+        buildingGO.transform.position = building.posChunk * chunkSize + new Vector3(building.sizeChunk.x * chunkSize, building.sizeChunk.y * chunkSize/2, building.sizeChunk.z * chunkSize);
         buildingGO.transform.localScale = building.sizeChunk * chunkSize;
         //Debug.Log(buildingGO.transform.position + " TUTAJ " + buildingGO.transform.localScale);
     }
@@ -164,9 +163,11 @@ public class MainGameObjectScript : MonoBehaviour
         Vector3 chunkPos = CalculatePosToChunk(position);
         Chunks chunk = null;
 
-        //Chunk constraint TODO: repair function to get chunks from (0,0) to (-infinity, -infinity)
-        List<List<Chunks>> mapInVicinity = GetPartOfMap((int)chunkPos.z - distance / 2, (int)chunkPos.x - distance / 2, distance, distance);
+        
 
+
+
+        List<List<Chunks>> mapInVicinity = GetPartOfMap((int)chunkPos.z - distance / 2, (int)chunkPos.x - distance / 2, distance, distance);
         for (int z = 0; z < mapInVicinity.Count; z++) {
             for (int x = 0; x < mapInVicinity[z].Count; x++) {
                 Debug.Log("BInLoop: " + mapInVicinity[z][x].connectedBuildings.Count);
@@ -183,6 +184,24 @@ public class MainGameObjectScript : MonoBehaviour
 
     private List<List<Chunks>> GetPartOfMap(int z, int x, int zElements, int xElements) {
         List<List<Chunks>> outputList;
+        //Chunk constraint to get in map range
+        if (z < 0)
+        {
+            z = 0;
+        }
+        if (z + zElements > mapChunksZToLoad)
+        {
+            zElements = mapChunksZToLoad - z;
+        }
+        if (x < 0)
+        {
+            x = 0;
+        }
+        if (x + xElements > mapChunksXToLoad)
+        {
+            xElements = mapChunksXToLoad - x;
+        }
+
         outputList = chunkMap.GetRange(z, zElements);
         for (int zIt = 0; zIt < zElements; zIt++) {
             outputList[zIt] = outputList[zIt].GetRange(x, xElements);

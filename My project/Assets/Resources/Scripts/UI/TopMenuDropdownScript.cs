@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 public class TopMenuDropdownScript : MonoBehaviour
 {
-    public float distanceToBuildings = 1;
+    public float distanceToBuildings = 10;
     public LinkingScript linkingScript;
     private List<Buildings> nearBuildings = null;
     // Start is called before the first frame update
@@ -16,29 +16,38 @@ public class TopMenuDropdownScript : MonoBehaviour
     {
     }
 
+
     // Update is called once per frame
     void Update()
     {
         nearBuildings = linkingScript.MGOS.GetBuildingsInVicinity(linkingScript.PC.transform.position, (int)distanceToBuildings);
         UpdateDropdown();
+
     }
 
     public void UpdateDropdown() {
+        //Clear options
         this.gameObject.GetComponent<TMP_Dropdown>().options.Clear();
-        Debug.Log("NB: " + nearBuildings.Count);
-        this.gameObject.GetComponent<TMP_Dropdown>().options.Add(new TMP_Dropdown.OptionData(nearBuildings[0].posChunk.ToString()));
-        // nearBuildings[0].name
-        /*
-        this.gameObject.GetComponent<TMP_Dropdown>().options.Clear();
+        
+        foreach(Buildings b in nearBuildings)
+        {
+            this.gameObject.GetComponent<TMP_Dropdown>().options.Add(new TMP_Dropdown.OptionData(b.posChunk.ToString()));
+            this.gameObject.GetComponent<TMP_Dropdown>().RefreshShownValue();
+        }
 
-        TMP_Dropdown.OptionData od = new TMP_Dropdown.OptionData();
-        od.text = "Pierogies";
-        this.gameObject.GetComponent<TMP_Dropdown>().options.Add(od);
-
-        od = new TMP_Dropdown.OptionData();
-        od.text = "Ziemniakos";
-        this.gameObject.GetComponent<TMP_Dropdown>().options.Add(od);
-        */
+        if (nearBuildings.Count > 0 && this.gameObject.GetComponent<TMP_Dropdown>().IsExpanded == false)
+        {//Show dropdown automatically
+            this.gameObject.GetComponent<TMP_Dropdown>().SetValueWithoutNotify(-1);
+            //this.gameObject.GetComponent<TMP_Dropdown>().Show();
+        }
+        else if (nearBuildings.Count <= 0 && this.gameObject.GetComponent<TMP_Dropdown>().IsExpanded == true)
+        { //Hide dropdown automatically
+            //this.gameObject.GetComponent<TMP_Dropdown>().Hide();
+            
+        }
+        else if (nearBuildings.Count <= 0) {//Show empty dropdown
+            this.gameObject.GetComponent<TMP_Dropdown>().RefreshShownValue();
+        }
     }
 
 }

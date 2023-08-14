@@ -59,6 +59,10 @@ public class TWG : MonoBehaviour
         //b.posChunk = new Vector3(0, 0, 0);
         mainGOS.addBuilding(b);
 
+        b = new Buildings();
+        b.posChunk = new Vector3(1, 0, 1);
+        mainGOS.addBuilding(b);
+
         //for(int x = (int)building.posChunk.x; x < building.posChunk.x + building.sizeChunk.x; x++) {
         //for (int z = (int)building.posChunk.y; z < building.posChunk.y + building.sizeChunk.z; z++)
 
