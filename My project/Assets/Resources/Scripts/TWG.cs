@@ -6,24 +6,24 @@ using UnityEngine;
 //Test World Generator
 public class TWG : MonoBehaviour
 {
+    public LinkingScript linkingScript;
     // Start is called before the first frame update
-    GameObject mainGO;
-    MainGameObjectScript mainGOS;
-    public void StartTestGame()
+    private Maps testMap = null;
+   // GameObject mainGO;
+    public void StartTestGame(Maps testMap)
     {
-        mainGO = GameObject.Find("MainGameObject");
-        mainGOS = mainGO.GetComponent<MainGameObjectScript>();
+        //mainGO = linkingScript.MGOS.GetComponent<MainGameObjectScript>();
 
-        //Debug.Log("CHUNKS1?: " + mainGOS.mapChunksZ);
-        //mainGOS.LoadMapLine(MainGameObjectScript.mapLineType.xPlus, new List<Chunks>(new Chunks[] { new Chunks(Chunks.ChunksTypes.Water) }));
-        //Debug.Log("CHUNKS2?: " + mainGOS.mapChunksZ);
+        //Debug.Log("CHUNKS1?: " + testMap.mapChunksZ);
+        //testMap.LoadMapLine(MainGameObjectScript.mapLineType.xPlus, new List<Chunks>(new Chunks[] { new Chunks(Chunks.ChunksTypes.Water) }));
+        //Debug.Log("CHUNKS2?: " + testMap.mapChunksZ);
         generateMap();
 
         checkStock();
     }
 
     public void checkStock() {
-        Debug.Log(mainGOS.getChunk(1, 1).connectedBuildings[0].getAllStockToString());
+        Debug.Log(testMap.GetChunk(1, 1).connectedBuildings[0].getAllStockToString());
     }
 
     //Merchands - pick up by spending money, Factories - transport for money from factories, Warehouses - store items
@@ -31,37 +31,37 @@ public class TWG : MonoBehaviour
     {
         Chunks c = null;
 
-        for (int z = 0; z < mainGOS.mapChunksZToLoad; z++)
+        for (int z = 0; z < testMap.mapChunksZToLoad; z++)
         {
             List<Chunks> chunksToAdd = new List<Chunks>();
-            //mainGOS.chunkMap.Add(new List<Chunks>());
-            for (int x = 0; x < mainGOS.mapChunksXToLoad; x++)
+            //testMap.chunkMap.Add(new List<Chunks>());
+            for (int x = 0; x < testMap.mapChunksXToLoad; x++)
             {
                 if (x <= 0)
                 {
                     c = new Chunks(Chunks.ChunksTypes.Water);
-                    //mainGOS.chunkMap[z].Add(c = new Chunks(Chunks.ChunksTypes.Water));
+                    //testMap.chunkMap[z].Add(c = new Chunks(Chunks.ChunksTypes.Water));
                 }
                 else
                 {
                     c = new Chunks(Chunks.ChunksTypes.Empty);
-                    //mainGOS.chunkMap[z].Add(c = new Chunks(Chunks.ChunksTypes.Empty));
+                    //testMap.chunkMap[z].Add(c = new Chunks(Chunks.ChunksTypes.Empty));
                 }
                 c.pos = new Vector3(x, 0, z);
                 chunksToAdd.Add(c);
             }
 
-            mainGOS.LoadMapLine(MainGameObjectScript.mapLineType.zPlus, chunksToAdd);
+            testMap.LoadMapLine(MainGameObjectScript.mapLineType.zPlus, chunksToAdd);
         }
 
 
         Buildings b = new Buildings();
         //b.posChunk = new Vector3(0, 0, 0);
-        mainGOS.addBuilding(b);
+        testMap.addBuilding(b);
 
         b = new Buildings();
         b.posChunk = new Vector3(1, 0, 1);
-        mainGOS.addBuilding(b);
+        testMap.addBuilding(b);
 
         //for(int x = (int)building.posChunk.x; x < building.posChunk.x + building.sizeChunk.x; x++) {
         //for (int z = (int)building.posChunk.y; z < building.posChunk.y + building.sizeChunk.z; z++)
@@ -70,33 +70,33 @@ public class TWG : MonoBehaviour
 
     public void generateMapOld() {
         Chunks c = null;
-            for (int z = 0; z < mainGOS.mapChunksZToLoad; z++)
+            for (int z = 0; z < testMap.mapChunksZToLoad; z++)
             {
                 List<Chunks> chunksToAdd = new List<Chunks>();
-                //mainGOS.chunkMap.Add(new List<Chunks>());
-                for (int x = 0; x < mainGOS.mapChunksXToLoad; x++)
+                //testMap.chunkMap.Add(new List<Chunks>());
+                for (int x = 0; x < testMap.mapChunksXToLoad; x++)
                 {
                     if (x <= 0)
                     {
                     c = new Chunks(Chunks.ChunksTypes.Water);
-                        //mainGOS.chunkMap[z].Add(c = new Chunks(Chunks.ChunksTypes.Water));
+                        //testMap.chunkMap[z].Add(c = new Chunks(Chunks.ChunksTypes.Water));
                     }
                     else
                     {
                     c = new Chunks(Chunks.ChunksTypes.Empty);
-                        //mainGOS.chunkMap[z].Add(c = new Chunks(Chunks.ChunksTypes.Empty));
+                        //testMap.chunkMap[z].Add(c = new Chunks(Chunks.ChunksTypes.Empty));
                     }
                 c.pos = new Vector3(x, 0, z);
                 chunksToAdd.Add(c);
             }
                 
-            mainGOS.LoadMapLine(MainGameObjectScript.mapLineType.zPlus, chunksToAdd);
+            testMap.LoadMapLine(MainGameObjectScript.mapLineType.zPlus, chunksToAdd);
             }
             
 
         Buildings b = new Buildings();
 
-        //mainGOS.addBuilding(b);
+        //testMap.addBuilding(b);
 
         //for(int x = (int)building.posChunk.x; x < building.posChunk.x + building.sizeChunk.x; x++) {
             //for (int z = (int)building.posChunk.y; z < building.posChunk.y + building.sizeChunk.z; z++)

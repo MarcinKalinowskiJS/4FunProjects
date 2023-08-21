@@ -16,3 +16,4 @@ Podczas szybkiego przelatywania mozna zapisywac tylko budynki i nie generowac ma
 8. Dostosowywanie koloru i wygladu plomienia
 9. Mozna sie stopic i koniec gry
 10. Kupowanie i dostosowywanie ziemi
+11. Inwestowanie w akcje, zyski z innych spolek, lepsze kontakty i wspolpraca jak ma sie dosc dobre stosunki po inwestowanie duzo przez dluzszy czas

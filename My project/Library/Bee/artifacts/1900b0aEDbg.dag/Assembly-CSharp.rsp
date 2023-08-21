@@ -364,6 +364,8 @@
 "Assets/Resources/Scripts/Classes/Buildings.cs"
 "Assets/Resources/Scripts/Classes/Chunks.cs"
 "Assets/Resources/Scripts/Classes/IAnimateStrategy.cs"
+"Assets/Resources/Scripts/Classes/IMapElement.cs"
+"Assets/Resources/Scripts/Classes/Maps.cs"
 "Assets/Resources/Scripts/Classes/StockInfo.cs"
 "Assets/Resources/Scripts/Dummy/PrintJumping.cs"
 "Assets/Resources/Scripts/ExtensionMethods/DisplayInfo.cs"

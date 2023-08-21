@@ -65,8 +65,10 @@
     <Compile Include="Assets\Resources\Scripts\MainGameObjectScript.cs" />
     <Compile Include="Assets\Resources\Scripts\UI\PositionUIElement.cs" />
     <Compile Include="Assets\Resources\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Resources\Scripts\Classes\Maps.cs" />
     <Compile Include="Assets\Resources\Scripts\AnimateWater.cs" />
     <Compile Include="Assets\Resources\Scripts\Classes\BlockedByInfo.cs" />
+    <Compile Include="Assets\Resources\Scripts\Classes\IMapElement.cs" />
     <Compile Include="Assets\Resources\Scripts\UI\TopMenuDropdownScript.cs" />
     <Compile Include="Assets\Resources\Scripts\ExtensionMethods\DisplayInfo.cs" />
     <Compile Include="Assets\Resources\Scripts\FollowPlayer.cs" />

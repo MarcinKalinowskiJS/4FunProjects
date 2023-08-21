@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Assets.Resources.Scripts.Classes
 {
-    public class Buildings
+    public class Buildings : IMapElement
     {
         public string name = "Ale duży budynek bez nazwy!";
         public enum buildingType { Merchand, Factory, Warehouse };
@@ -22,6 +22,7 @@ namespace Assets.Resources.Scripts.Classes
         //<StockName, StockInfo>>
         private SortedDictionary<string, StockInfo> stock;
         //StockName, Stock count, Price, <blockedBy, blocked, timeStamp>
+        public GameObject go = null;
 
         public Buildings() {
             stock = new SortedDictionary<string, StockInfo>();
@@ -33,6 +34,13 @@ namespace Assets.Resources.Scripts.Classes
         public Buildings(Vector3 buildingsPos) {
             posChunk = buildingsPos;
         }
+
+        public GameObject GameObjectInstance
+        {
+            get { return go; }
+            set { go = value; }
+        }
+
         public void transfer(String stockName, int count) {
             //stock.
             ;
